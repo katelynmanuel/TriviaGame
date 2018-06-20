@@ -1,0 +1,13 @@
+body {
+    background: url("../images/LighteningBoltBackground.jpg");
+}
+
+.container {
+    margin-top: 20px;
+    background-color: white;
+    width: 70%;
+    padding: 20px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    text-align: center;
+}
