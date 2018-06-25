@@ -3,11 +3,26 @@ body {
 }
 
 .container {
-    margin-top: 20px;
-    background-color: white;
+    margin-top: 40px;
+    background: white; 
     width: 70%;
     padding: 20px;
     margin-bottom: 20px;
-    opacity: 0.8;
     text-align: center;
 }
+
+p {
+    margin: 20px;
+}
+
+.displayquestion {
+    line-height: 2;
+}
+
+button {
+    size: 16px;
+    background-color: white;
+    
+}
+
+
