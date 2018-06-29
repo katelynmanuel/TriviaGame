@@ -102,6 +102,21 @@ $(".displayButton").on("click", function displayCurrentQuestion () {
     console.log(currentQuestion);
 });
 
+function nextQuestion (index) {
+    if (index < 0 && i < 8) {
+        i++
+        var currentQuestion = `
+        <h4>${triviaQuestions[i].question}</h4><br/>
+        <input type="radio" name="choices" value="0">${triviaQuestions[i].choices[0]}</input><br/>
+        <input type="radio" name="choices" value="1">${triviaQuestions[i].choices[1]}</input><br/>
+        <input type="radio" name="choices" value="2">${triviaQuestions[i].choices[2]}</input><br/>
+        <input type="radio" name="choices" value="3">${triviaQuestions[i].choices[3]}</input><br/><br/>
+        `;
+        $(".displayQuestion").html(currentQuestion);
+        run();
+    }
+};
+
 //Check to see if there are more questions. If i > 9, display user results, else move to current question.
 $("#submit").on("click", function() {
     var prevQuestion = triviaQuestions[i];
@@ -120,14 +135,7 @@ $("#submit").on("click", function() {
         `)
         playAgain();
     } else { 
-        var currentQuestion = `
-        <h4>${triviaQuestions[i].question}</h4><br/>
-        <input type="radio" name="choices" value="0">${triviaQuestions[i].choices[0]}</input><br/>
-        <input type="radio" name="choices" value="1">${triviaQuestions[i].choices[1]}</input><br/>
-        <input type="radio" name="choices" value="2">${triviaQuestions[i].choices[2]}</input><br/>
-        <input type="radio" name="choices "value="3">${triviaQuestions[i].choices[3]}</input><br/><br/>
-        `;
-        $(".displayQuestion").html(currentQuestion);
+        nextQuestion(1);
     }
     stop();
     run();
@@ -160,8 +168,7 @@ function run () {
             stop();
             $(".displayTimer").html("<h4>Time's Up!</h4>");
             unansweredQuestions++
-            checkAnswer();
-            $(".displayQuestion").hide();
+            nextQuestion(-1);
         }
     };
 
