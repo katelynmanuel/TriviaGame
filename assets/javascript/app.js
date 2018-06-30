@@ -85,8 +85,8 @@ function startButton() {
 
 startButton();
 
-//Displays current question when start button is clicked.
-$(".displayButton").on("click", function displayCurrentQuestion () {
+function displayCurrentQuestion () {
+   
     run();
     $(".main").empty();
     $(".displayButton").empty();
@@ -100,11 +100,14 @@ $(".displayButton").on("click", function displayCurrentQuestion () {
     `;
     $(".displayQuestion").html(currentQuestion);
     console.log(currentQuestion);
-});
+};
 
-function nextQuestion (index) {
-    if (index < 0 && i < 8) {
-        i++
+//Displays current question when start button is clicked. Make this a global function. 
+$(".displayButton").on("click", displayCurrentQuestion());
+
+function nextQuestion () {
+    if (i < triviaQuestions.length) {
+        console.log("i = " + i)
         var currentQuestion = `
         <h4>${triviaQuestions[i].question}</h4><br/>
         <input type="radio" name="choices" value="0">${triviaQuestions[i].choices[0]}</input><br/>
@@ -121,7 +124,7 @@ function nextQuestion (index) {
 $("#submit").on("click", function() {
     var prevQuestion = triviaQuestions[i];
     checkAnswer(prevQuestion);
-    i++
+    i++;
     if (i > 9) {
         stop();
         $(".displayChoices").empty();
@@ -135,7 +138,7 @@ $("#submit").on("click", function() {
         `)
         playAgain();
     } else { 
-        nextQuestion(1);
+        nextQuestion();
     }
     stop();
     run();
@@ -168,7 +171,7 @@ function run () {
             stop();
             $(".displayTimer").html("<h4>Time's Up!</h4>");
             unansweredQuestions++
-            nextQuestion(-1);
+            nextQuestion();
         }
     };
 
@@ -184,6 +187,7 @@ function playAgain () {
     $(".displayChoices").empty();
     $(".displayQuestion").empty();
     $(".displayTimer").hide();
+    i = 0;
     var playAgainButton = $("<button>");
     playAgainButton.text("Play Again!");
     $(".displayPlayAgain").html(playAgainButton);
