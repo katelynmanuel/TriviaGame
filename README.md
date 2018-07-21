@@ -5,6 +5,10 @@ Assigment Five: Trivia Game.
 
 Harry Potter Trivia! In this game, the user is shown 10 trivia questions and given 20 seconds to answer the question. If the timer runs out, the player is notified and the next question is displayed. At the end of the game, the player gets a summary of the results of their correct, incorrect, and unansweered questions. 
 
+### Deployed Project
+
+https://katelynmanuel.github.io/TriviaGame/
+
 ### Step One
 
 First, I created variables and an array with objects to hold the question, choices, and correct answer values by pulling the index of the correct answer from the choices object.
